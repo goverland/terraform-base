@@ -42,6 +42,9 @@ resource "azurerm_app_configuration_key" "app1_config_key" {
   label                  = "somelabel"
   value                  = "a test"
 
-  depends_on = [azurerm_app_configuration.shared_app_config]
+  depends_on = [
+    azurerm_app_configuration.shared_app_config,
+    azurerm_role_assignment.appconf_dataowner
+  ]
 }
 
