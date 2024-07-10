@@ -28,26 +28,4 @@ resource "azurerm_storage_container" "container" {
   container_access_type = "private"
 }
 
-resource "azurerm_storage_blob" "data_import" {
-  name                   = "Data Import/placeholder.txt"
-  storage_account_name   = azurerm_storage_account.storage.name
-  storage_container_name = azurerm_storage_container.container.name
-  type                   = "Block"
-  source                 = "./placeholder.txt"
-}
 
-resource "azurerm_storage_blob" "data_scratch" {
-  name                   = "Data Scratch/placeholder.txt"
-  storage_account_name   = azurerm_storage_account.storage.name
-  storage_container_name = azurerm_storage_container.container.name
-  type                   = "Block"
-  source                 = "./placeholder.txt"
-}
-
-resource "azurerm_storage_blob" "data_failed" {
-  name                   = "Data Failed/placeholder.txt"
-  storage_account_name   = azurerm_storage_account.storage.name
-  storage_container_name = azurerm_storage_container.container.name
-  type                   = "Block"
-  source                 = "./placeholder.txt"
-}
