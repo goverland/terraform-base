@@ -22,7 +22,8 @@ resource "azurerm_storage_account" "storage" {
 }
 
 resource "azurerm_storage_container" "container" {
-  name                  = "test-kommune"
+  for_each = toset(var.customer_names)
+  name                  = each.value
   storage_account_name  = azurerm_storage_account.storage.name
   container_access_type = "private"
 }
