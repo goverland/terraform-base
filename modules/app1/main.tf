@@ -1,10 +1,19 @@
+terraform {
+  required_providers {
+    azurerm = {
+      source = "hashicorp/azurerm"
+      version = ">= 2.0"
+    }
+  }
+}
+
 resource "azurerm_resource_group" "rg" {
     name     = "test-terraform-dev-rg"
     location = "norwayeast"
 }
 
 resource "azurerm_storage_account" "storage" {
-    name                     = "testterraformdevsa"
+    name                     = substr(format("%s%s%s", replace("${var.subscription_name}", "-", ""), "storage${random_integer.ri.result}"), 0, 24)
     resource_group_name      = azurerm_resource_group.rg.name
     location                 = azurerm_resource_group.rg.location
     account_tier             = "Standard"
