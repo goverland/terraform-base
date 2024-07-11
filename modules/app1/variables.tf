@@ -3,7 +3,7 @@ variable "customer_names" {
     type        = list(string)
 }
 
-variable "subscription_name" {
+variable "subscription_group_name" {
     description = "Subscription name used to tag resources"
     type        = string 
 }

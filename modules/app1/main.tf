@@ -13,7 +13,7 @@ resource "azurerm_resource_group" "rg" {
 }
 
 resource "azurerm_storage_account" "storage" {
-  name                      = substr(format("%s%s", replace(var.subscription_name, "-", ""), "storageapp1go"), 0, 24)
+  name                      = substr(format("%s%s", replace(var.subscription_group_name, "-", ""), "storageapp1go"), 0, 24)
   resource_group_name       = azurerm_resource_group.rg.name
   location                  = azurerm_resource_group.rg.location
   account_tier              = "Standard"
@@ -47,4 +47,3 @@ resource "azurerm_app_configuration_key" "app1_config_key" {
     azurerm_role_assignment.appconf_dataowner
   ]
 }
-
