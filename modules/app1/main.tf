@@ -28,18 +28,6 @@ resource "azurerm_storage_container" "container" {
   container_access_type = "private"
 }
 
-data "azurerm_client_config" "current" {}
-
-resource "azurerm_role_assignment" "appconf_dataowner" {
-  scope                = azurerm_app_configuration.appconf.id
-  role_definition_name = "App Configuration Data Owner"
-  principal_id         = data.azurerm_client_config.current.object_id
-
-  depends_on = [
-    azurerm_app_configuration.shared_app_config
-  ]
-}
-
 resource "azurerm_app_configuration_key" "app1_config_key" {
   configuration_store_id = var.shared_app_config_id
   key                    = "app1-conf-key1"
@@ -47,7 +35,6 @@ resource "azurerm_app_configuration_key" "app1_config_key" {
   value                  = "a test"
 
   depends_on = [
-    azurerm_app_configuration.shared_app_config,
-    azurerm_role_assignment.appconf_dataowner
+    azurerm_app_configuration.shared_app_config
   ]
 }
