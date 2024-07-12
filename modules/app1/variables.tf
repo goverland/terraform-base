@@ -13,3 +13,8 @@ variable "shared_app_config_id" {
   type        = string
   
 }
+
+variable "shared_appconf_dataowner_id" {
+  description = "The ID of the shared app configuration data owner"
+  type        = string
+}

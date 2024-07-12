@@ -33,4 +33,6 @@ resource "azurerm_app_configuration_key" "app1_config_key" {
   key                    = "app1-conf-key1"
   label                  = "somelabel"
   value                  = "a test"
+
+  depends_on = [var.shared_appconf_dataowner_id]
 }
